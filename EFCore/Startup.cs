@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EFCore.Managers;
+using EFCore.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +34,11 @@ namespace EFCore
             {
                 options.UseSqlServer("Server=.;Database=TestEFDB;Integrated Security=true");
             });
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<IGroupRepository, GroupRepository>();
+            services.AddScoped<StudentManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

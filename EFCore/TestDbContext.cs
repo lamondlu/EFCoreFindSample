@@ -23,6 +23,7 @@ namespace EFCore
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<StudentGroup>().HasKey(p => new { p.GroupId, p.StudentId });
+            modelBuilder.Entity<Group>().HasData(new Group { GroupId = Guid.Parse("{366EBFBE-DFE6-4E04-97E9-5EDD07CE88C0}"), GroupName = "Math Group" });
 
             base.OnModelCreating(modelBuilder);
         }
