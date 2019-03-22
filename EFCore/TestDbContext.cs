@@ -33,6 +33,11 @@ namespace EFCore
     [Table("Student")]
     public class Student
     {
+        public Student()
+        {
+            StudentGroups = new List<StudentGroup>();
+        }
+
         [Key]
         public Guid StudentId { get; set; }
 
